@@ -1,0 +1,13 @@
+language: swift
+osx_image: xcode8.2
+
+cache:
+  - bundler
+  - cocoapods
+
+install:
+  - bundle install
+  - pod install
+
+script:
+  - xcodebuild clean build test -workspace Decoupler.xcworkspace -scheme Decoupler -destination 'platform=iOS Simulator,name=iPhone 7,OS=latest'
