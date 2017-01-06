@@ -2,6 +2,44 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:LICENSE">
+   </FileRef>
+   <Group
+      location = "container:"
+      name = "xcode-project-setup">
+      <Group
+         location = "container:"
+         name = "scripts">
+         <FileRef
+            location = "group:scripts/post-merge">
+         </FileRef>
+         <FileRef
+            location = "group:scripts/pre-push">
+         </FileRef>
+         <FileRef
+            location = "group:scripts/run_synx">
+         </FileRef>
+         <FileRef
+            location = "group:scripts/run_xUnique">
+         </FileRef>
+         <FileRef
+            location = "group:scripts/xUnique.py">
+         </FileRef>
+      </Group>
+      <FileRef
+         location = "group:Gemfile">
+      </FileRef>
+      <FileRef
+         location = "group:Podfile">
+      </FileRef>
+      <FileRef
+         location = "group:run_synx_and_xUnique">
+      </FileRef>
+      <FileRef
+         location = "group:setup">
+      </FileRef>
+   </Group>
+   <FileRef
       location = "group:Decoupler.xcodeproj">
    </FileRef>
    <FileRef
