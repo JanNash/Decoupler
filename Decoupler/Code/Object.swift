@@ -50,6 +50,21 @@ extension Collection where Iterator.Element: DataSourceClient {
 }
 
 
+extension Collection where Iterator.Element: AsyncDataSourceClient {
+    func didLoad(_ objects: [Object], from dataSource: AsyncDataSource) {
+        self.forEach({ $0.didLoad(objects, from: dataSource) })
+    }
+    
+    func didSave(_ objects: [Object], to dataSource: AsyncDataSource) {
+        self.forEach({ $0.didSave(objects, to: dataSource) })
+    }
+    
+    func didDelete(_ objects: [Object], from dataSource: AsyncDataSource) {
+        self.forEach({ $0.didDelete(objects, from: dataSource) })
+    }
+}
+
+
 enum SaveResult {
     enum SaveError: Error {
         case unknown
