@@ -19,29 +19,32 @@ typealias Minutes = Float
 
 
 protocol DataSourceClient {
-    func shouldLoad<D: DataSource>(_ objects: [Object], from dataSource: D) -> Bool
-    func shouldSave<D: DataSource>(_ objects: [Object], to dataSource: D) -> Bool
-    func shouldDelete<D: DataSource>(_ objects: [Object], from dataSource: D) -> Bool
+    func shouldLoad(_ objects: [Object], from dataSource: DataSource) -> Bool
+    func willLoad(_ objects: [Object], from dataSource: DataSource) -> Bool
+    func shouldSave(_ objects: [Object], to dataSource: DataSource) -> Bool
+    func willSave(_ objects: [Object], to dataSource: DataSource) -> Bool
+    func shouldDelete(_ objects: [Object], from dataSource: DataSource) -> Bool
+    func willDelete(_ objects: [Object], from dataSource: DataSource) -> Bool
 }
 
 
 protocol AsyncDataSourceClient: DataSourceClient {
-    func didLoad<AD: AsyncDataSource>(_ objects: [Object], from dataSource: AD)
-    func didSave<AD: AsyncDataSource>(_ objects: [Object], to dataSource: AD)
-    func didDelete<AD: AsyncDataSource>(_ objecs: [Object], from dataSource: AD)
+    func didLoad(_ objects: [Object], from dataSource: AsyncDataSource)
+    func didSave(_ objects: [Object], to dataSource: AsyncDataSource)
+    func didDelete(_ objecs: [Object], from dataSource: AsyncDataSource)
 }
 
 
-extension Array {
-    func shouldLoad<D: DataSource>(_ objects: [Object], from dataSource: D) -> Bool where Element: DataSourceClient {
+extension Collection where Iterator.Element: DataSourceClient {
+    func shouldLoad(_ objects: [Object], from dataSource: DataSource) -> Bool  {
         return self.all(fulfill: { $0.shouldLoad(objects, from: dataSource) })
     }
     
-    func shouldSave<D: DataSource>(_ objects: [Object], to dataSource: D) -> Bool where Element: DataSourceClient {
+    func shouldSave(_ objects: [Object], to dataSource: DataSource) -> Bool {
         return self.all(fulfill: { $0.shouldSave(objects, to: dataSource) })
     }
     
-    func shouldDelete<D: DataSource>(_ objects: [Object], from dataSource: D) -> Bool where Element: DataSourceClient {
+    func shouldDelete(_ objects: [Object], from dataSource: DataSource) -> Bool {
         return self.all(fulfill: { $0.shouldDelete(objects, from: dataSource) })
     }
 }
@@ -54,8 +57,8 @@ enum SaveResult {
         case failedValidation
     }
     
-    case success(Object)
-    case failure(SaveError)
+    case success(objects: [Object])
+    case failure(error: SaveError, objects: [Object])
 }
 
 enum ReloadResult {
@@ -64,8 +67,8 @@ enum ReloadResult {
         case unauthorized
     }
     
-    case success(Object)
-    case failure(ReloadError)
+    case success(objects: [Object])
+    case failure(error: ReloadError, objects: [Object])
 }
 
 enum DeleteResult {
@@ -75,8 +78,8 @@ enum DeleteResult {
         case failedValidation
     }
     
-    case success(Object)
-    case failure(DeleteError)
+    case success(objects: [Object])
+    case failure(error: DeleteError, objects: [Object])
 }
 
 
@@ -87,7 +90,7 @@ protocol DataSource {
 
 protocol SyncDataSource: DataSource {
     func loadObjectsSync(withIDs ids: [ObjectID]) -> [Identifiable]
-    func loadObjectsSync<F: Filter>(ofType type: Object.Type, with filters: [F]) -> [Object]
+    func loadObjectsSync(ofType type: Object.Type, with filters: [Filter]) -> [Object]
     func reloadObjectsSync(_ objects: [Object]) -> ReloadResult
     func saveObjectsSync(_ objects: [Object]) -> SaveResult
     func deleteObjectsSync(_ objects: [Object]) -> DeleteResult
@@ -97,7 +100,7 @@ protocol AsyncDataSource: DataSource {
     var clients: [AsyncDataSourceClient] { get }
     
     func loadObjectsAsync(withIDs ids: [ObjectID])
-    func loadObjectsAsync<F: Filter>(ofType type: Object.Type, with filters: [F])
+    func loadObjectsAsync(ofType type: Object.Type, with filters: [Filter])
     func reloadObjectsAsync(_ objects: [Object])
     func saveObjectsAsync(_ objects: [Object])
     func deleteObjectsAsync(_ objects: [Object])
@@ -106,12 +109,12 @@ protocol AsyncDataSource: DataSource {
 
 
 protocol DataController {
-    func loadObject<SD: SyncDataSource>(with id: ObjectID, from syncDataSource: SD) -> Identifiable?
-    func loadObjects<SD: SyncDataSource>(with ids: [ObjectID], from syncDataSource: SD) -> [Identifiable]
-    func loadObjects<SD: SyncDataSource, F: Filter>(with filters: [F], from syncDataSource: SD) -> [Object]
-    func reloadObjects<Ob: Object, SD: SyncDataSource>(_ object: [Ob], from syncDataSource: SD) -> ReloadResult
-    func saveObjects<Ob: Object, SD: SyncDataSource>(_ objects: [Ob], to syncDataSource: SD) -> SaveResult
-    func deleteObjects<Ob: Object, SD: SyncDataSource>(_ objects: [Ob], from syncDataSource: SD) -> DeleteResult
+    func loadObject(with id: ObjectID, from syncDataSource: SyncDataSource) -> Identifiable?
+    func loadObjects(with ids: [ObjectID], from syncDataSource: SyncDataSource) -> [Identifiable]
+    func loadObjects(with filters: [Filter], from syncDataSource: SyncDataSource) -> [Object]
+    func reloadObjects(_ object: [Object], from syncDataSource: SyncDataSource) -> ReloadResult
+    func saveObjects(_ objects: [Object], to syncDataSource: SyncDataSource) -> SaveResult
+    func deleteObjects(_ objects: [Object], from syncDataSource: SyncDataSource) -> DeleteResult
 }
 
 
