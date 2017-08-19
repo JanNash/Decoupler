@@ -31,7 +31,7 @@ protocol DataSourceClient {
 protocol AsyncDataSourceClient: DataSourceClient {
     func didLoad(_ objects: [Object], from dataSource: AsyncDataSource)
     func didSave(_ objects: [Object], to dataSource: AsyncDataSource)
-    func didDelete(_ objecs: [Object], from dataSource: AsyncDataSource)
+    func didDelete(_ objects: [Object], from dataSource: AsyncDataSource)
 }
 
 
