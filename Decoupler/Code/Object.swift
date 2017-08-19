@@ -6,37 +6,46 @@
 //  Copyright © 2017 JanNash. All rights reserved.
 //
 
-import Foundation
+import SignificantSpices
+import WeakRefCollections
 
 
 
-protocol MappedData {
-    
-}
+
+protocol MappedData {}
 
 typealias Minutes = Float
 
 
 
-
-
-protocol WeakDataSourceClientArray {
-    func cachePolicy<D: DataSource>(for objects: [Object], on dataSource: D) -> CachePolicy
-    func didCache<D: DataSource>(_ objects: [Object], on dataSource: D, with cachePolicy: CachePolicy)
-    func shouldLoad<D: DataSource>(_ objects: [Object], from dataSource: D)
-    func didLoad<D: DataSource>(_ objects: [Object], from dataSource: D)
-    func shouldSave<D: DataSource>(_ objects: [Object], to dataSource: D)
-    func didSave<D: DataSource>(_ objects: [Object], to dataSource: D)
-    func shouldDelete<D: DataSource>(_ objects: [Object], from dataSource: D)
-    func didDelete<D: DataSource>(_ objecs: [Object], from dataSource: D)
+protocol DataSourceClient {
+    func shouldLoad<D: DataSource>(_ objects: [Object], from dataSource: D) -> Bool
+    func shouldSave<D: DataSource>(_ objects: [Object], to dataSource: D) -> Bool
+    func shouldDelete<D: DataSource>(_ objects: [Object], from dataSource: D) -> Bool
 }
 
 
-enum CachePolicy {
-    case dontCache
-    case cacheFor(minutes: Float)
-    case cachePermanently
+protocol AsyncDataSourceClient: DataSourceClient {
+    func didLoad<AD: AsyncDataSource>(_ objects: [Object], from dataSource: AD)
+    func didSave<AD: AsyncDataSource>(_ objects: [Object], to dataSource: AD)
+    func didDelete<AD: AsyncDataSource>(_ objecs: [Object], from dataSource: AD)
 }
+
+
+extension Array {
+    func shouldLoad<D: DataSource>(_ objects: [Object], from dataSource: D) -> Bool where Element: DataSourceClient {
+        return self.all(fulfill: { $0.shouldLoad(objects, from: dataSource) })
+    }
+    
+    func shouldSave<D: DataSource>(_ objects: [Object], to dataSource: D) -> Bool where Element: DataSourceClient {
+        return self.all(fulfill: { $0.shouldSave(objects, to: dataSource) })
+    }
+    
+    func shouldDelete<D: DataSource>(_ objects: [Object], from dataSource: D) -> Bool where Element: DataSourceClient {
+        return self.all(fulfill: { $0.shouldDelete(objects, from: dataSource) })
+    }
+}
+
 
 enum SaveResult {
     enum SaveError: Error {
@@ -72,147 +81,66 @@ enum DeleteResult {
 
 
 protocol DataSource {
-    // Of course, this will have to be a WeakRefDict...
-    //    static var idCache: [ObjectID: Object] { get set }
-    //    static var filterCache: [[Filter]: ObjectID] { get set }
-    var defaultCachePolicy: CachePolicy { get }
-    
-    var clients: WeakDataSourceClientArray { get }
-    
-    func map(object: Object) -> MappedData
-    func map(mappedData: MappedData) -> Object
-    
-    mutating func loadObjects(withIDs ids: [ObjectID], overrideCache: Bool) -> [Identifiable]
-    mutating func loadObjects<F: Filter>(ofType type: Object.Type, with filters: [F], overrideCache: Bool) -> [Object]
-    mutating func reloadObjects(_ objects: [Object]) -> ReloadResult
-    mutating func persistObjects(_ objects: [Object]) -> SaveResult
-    mutating func deleteObjects(_ objects: [Object]) -> DeleteResult
-    
-    mutating func flushIDCache()
-    mutating func flushFilterCache()
-    mutating func flushAllCashes()
+    var clients: DataSourceClient { get }
 }
 
 
-protocol ObjectCache {
-    var idCache: [ObjectID: Object] { get set }
+protocol SyncDataSource: DataSource {
+    func loadObjectsSync(withIDs ids: [ObjectID]) -> [Identifiable]
+    func loadObjectsSync<F: Filter>(ofType type: Object.Type, with filters: [F]) -> [Object]
+    func reloadObjectsSync(_ objects: [Object]) -> ReloadResult
+    func saveObjectsSync(_ objects: [Object]) -> SaveResult
+    func deleteObjectsSync(_ objects: [Object]) -> DeleteResult
 }
 
-
-extension DataSource {
-    mutating func loadObjects(with ids: [ObjectID], cachePolicy: CachePolicy? = nil) -> [Identifiable] {
-        return self._loadObjects(with: ids, cachePolicy: cachePolicy)
-    }
+protocol AsyncDataSource: DataSource {
+    var clients: [AsyncDataSourceClient] { get }
     
-    mutating func loadObjects<F: Filter>(ofType type: Object.Type, with filters: [F], cachePolicy: CachePolicy? = nil) -> [Object] {
-        return self._loadObjects(ofType: type, with: filters, cachePolicy: cachePolicy)
-    }
-    
-    mutating func cache(_ objects: [Identifiable], for minutes: Minutes) {
-        self._cache(objects, for: minutes)
-    }
+    func loadObjectsAsync(withIDs ids: [ObjectID])
+    func loadObjectsAsync<F: Filter>(ofType type: Object.Type, with filters: [F])
+    func reloadObjectsAsync(_ objects: [Object])
+    func saveObjectsAsync(_ objects: [Object])
+    func deleteObjectsAsync(_ objects: [Object])
 }
-
-private extension DataSource {
-    mutating func _loadObjects(with ids: [ObjectID], cachePolicy: CachePolicy?) -> [Identifiable] {
-        let objects: [Identifiable] = self.loadObjects(withIDs: ids, overrideCache: true)
-        
-        switch cachePolicy ?? self.defaultCachePolicy {
-        case .cachePermanently:
-            break
-        case let .cacheFor(minutes):
-            self.cache(objects, for: minutes)
-//            self.clients.didCache(objects, on: self, with: cachePolicy)
-        case .dontCache:
-            break
-        }
-        
-        self.clients.didLoad(objects, from: self)
-        return objects
-    }
-    
-    mutating func _loadObjects<F: Filter>(ofType type: Object.Type, with filters: [F], cachePolicy: CachePolicy?) -> [Object] {
-        let objects: [Object] = self.loadObjects(ofType: type, with: filters, overrideCache: true)
-        
-        switch cachePolicy ?? self.defaultCachePolicy {
-        case .cachePermanently:
-            break
-        case let .cacheFor(minutes):
-//            self.cacheObjects(objects, for: minutes)
-//            self.clients.didCache(objects, on: self, for: minutes)
-            break
-        case .dontCache:
-            break
-        }
-        
-//        self.clients.objectsWereLoaded(objects, from: self)
-        return objects
-        
-        return []
-    }
-    
-    mutating func _cache(_ objects: [Identifiable], for minutes: Minutes) {
-//        objects.forEach({ self.idCache.updateValue($0, forKey: $0.objectID) })
-    }
-    
-    //    mutating func _cacheObjects(_ objectDict: [Filter: Object], for minutes: Minutes) {
-    //
-    //    }
-}
-
 
 
 
 protocol DataController {
-    func loadObject<D: DataSource>(with id: ObjectID, from dataSource: D, cachePolicy: CachePolicy) -> Identifiable?
-    func loadObjects<D: DataSource>(with ids: [ObjectID], from dataSource: D) -> [Identifiable]
-    func loadObjects<D: DataSource, F: Filter>(with filters: [F], from dataSource: D) -> [Object]
-    func reloadObjects<Ob: Object, D: DataSource>(_ object: [Ob]) -> (ReloadResult, D)
-    func persistObjects<Ob: Object, D: DataSource>(_ objects: [Ob]) -> (ReloadResult, D)
-    func deleteObjects<Ob: Object, D: DataSource>(_ objects: [Ob]) -> (ReloadResult, D)
+    func loadObject<SD: SyncDataSource>(with id: ObjectID, from syncDataSource: SD) -> Identifiable?
+    func loadObjects<SD: SyncDataSource>(with ids: [ObjectID], from syncDataSource: SD) -> [Identifiable]
+    func loadObjects<SD: SyncDataSource, F: Filter>(with filters: [F], from syncDataSource: SD) -> [Object]
+    func reloadObjects<Ob: Object, SD: SyncDataSource>(_ object: [Ob], from syncDataSource: SD) -> ReloadResult
+    func saveObjects<Ob: Object, SD: SyncDataSource>(_ objects: [Ob], to syncDataSource: SD) -> SaveResult
+    func deleteObjects<Ob: Object, SD: SyncDataSource>(_ objects: [Ob], from syncDataSource: SD) -> DeleteResult
 }
 
 
 
 
-protocol Filter: Hashable {
-    
-}
-
-
+protocol Filter {}
 
 
 protocol Object {
     var controller: DataController { get }
 }
 
+protocol ObjectID {}
+
 protocol Identifiable: Object {
-    var IDValue: Int { get }
     var objectID: ObjectID { get }
 }
 
 
-
-
-class ObjectID {
-    var registeredCopies: [Identifiable] = []
-}
-
-extension ObjectID {
-    var value: Int {
-        return self.registeredCopies.first!.IDValue
+class Pet: Object {
+    init(with controller: DataController) {
+        self.controller = controller
     }
+    
+    var controller: DataController
 }
 
-extension ObjectID: Equatable {
-    static func ==(_ lhs: ObjectID, _ rhs: ObjectID) -> Bool {
-        return lhs.hashValue == rhs.hashValue
-    }
-}
 
-extension ObjectID: Hashable {
-    var hashValue: Int {
-        return self.value
-    }
-}
+
+
+
 
