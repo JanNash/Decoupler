@@ -30,7 +30,7 @@
 		7EBDF68965B8900DD41594ED5718F2D8 /* Pods_Decoupler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Decoupler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		91CFAD8CE6D0451D53BF8D3B0BC239AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		944E9187CF439990F8FCA14F6B4F7169 /* DecouplerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DecouplerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9675CA24D843FF58A91158FA6D4EC16F /* Object.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Object.swift; path = Object.swift; sourceTree = "<group>"; };
+		9675CA24D843FF58A91158FA6D4EC16F /* Object.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Object.swift; sourceTree = "<group>"; };
 		A8D0D7F3549ACE7889981E2C4FCD9E51 /* Pods-DecouplerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DecouplerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DecouplerTests/Pods-DecouplerTests.release.xcconfig"; sourceTree = "<group>"; };
 		AB963FD4A2C61E97E314CD699F97831D /* Pods-DecouplerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DecouplerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DecouplerTests/Pods-DecouplerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B1AF9EE2F620BDBC1F7B9AE21D35C681 /* Decoupler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Decoupler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,7 +78,6 @@
 			children = (
 				9675CA24D843FF58A91158FA6D4EC16F /* Object.swift */,
 			);
-			name = Code;
 			path = Code;
 			sourceTree = "<group>";
 		};
@@ -117,7 +116,6 @@
 				FFE5EEF24F3D1539B32DDBB371DC481C /* Decoupler.h */,
 				91CFAD8CE6D0451D53BF8D3B0BC239AE /* Info.plist */,
 			);
-			name = "Supporting Files";
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
@@ -157,7 +155,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BA60C8B614875B1A5A76A0D81CE6E24B /* Build configuration list for PBXNativeTarget "DecouplerTests" */;
 			buildPhases = (
-				6CBB021FC2BCBFDCB547A33FB38BA03D /* [CP] Check Pods Manifest.lock */,
+				9E3B55547EE4EA2A586A5B69D3015363 /* [CP] Check Pods Manifest.lock */,
 				54B2AFD0869D051E1F4306977685E50D /* Sources */,
 				C2D9E93CFD840B667D937D2FB5864E1A /* Frameworks */,
 				ECDF91F80A249CC42985B23E574210A4 /* Resources */,
@@ -178,7 +176,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 57DE72260F1513D375B5D569DD123C23 /* Build configuration list for PBXNativeTarget "Decoupler" */;
 			buildPhases = (
-				021FBDAFE4B8C4194193F025ABDFFAFE /* [CP] Check Pods Manifest.lock */,
+				B37B6BCD8449401AF3C3EC77E4D2B9DA /* [CP] Check Pods Manifest.lock */,
 				00B2923AFB1757F755700D36AFDC4DC8 /* Sources */,
 				8CBCC734B4A2BAC5B84365270432BF83 /* Frameworks */,
 				17F13415CAAB71D0FD8EB81573DD6AF8 /* Headers */,
@@ -253,7 +251,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		021FBDAFE4B8C4194193F025ABDFFAFE /* [CP] Check Pods Manifest.lock */ = {
+		B37B6BCD8449401AF3C3EC77E4D2B9DA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -286,7 +284,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DecouplerTests/Pods-DecouplerTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6CBB021FC2BCBFDCB547A33FB38BA03D /* [CP] Check Pods Manifest.lock */ = {
+		9E3B55547EE4EA2A586A5B69D3015363 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -472,7 +470,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A8D0D7F3549ACE7889981E2C4FCD9E51 /* Pods-DecouplerTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = VH2HTP6MYB;
 				INFOPLIST_FILE = DecouplerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -508,7 +505,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AB963FD4A2C61E97E314CD699F97831D /* Pods-DecouplerTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = VH2HTP6MYB;
 				INFOPLIST_FILE = DecouplerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
