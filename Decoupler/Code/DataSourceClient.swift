@@ -10,27 +10,27 @@
 // MARK: // Public
 // MARK: Protocol Declaration
 protocol DataSourceClient {
-    func shouldLoad(_ objects: [Object], from dataSource: DataSource) -> Bool
-    func willLoad(_ objects: [Object], from dataSource: DataSource) -> Bool
-    func shouldSave(_ objects: [Object], to dataSource: DataSource) -> Bool
-    func willSave(_ objects: [Object], to dataSource: DataSource) -> Bool
-    func shouldDelete(_ objects: [Object], from dataSource: DataSource) -> Bool
-    func willDelete(_ objects: [Object], from dataSource: DataSource) -> Bool
+    func shouldLoad(_ objects: [Object], from dataSource: SyncDataSource) -> Bool
+    func willLoad(_ objects: [Object], from dataSource: SyncDataSource) -> Bool
+    func shouldSave(_ objects: [Object], to dataSource: SyncDataSource) -> Bool
+    func willSave(_ objects: [Object], to dataSource: SyncDataSource) -> Bool
+    func shouldDelete(_ objects: [Object], from dataSource: SyncDataSource) -> Bool
+    func willDelete(_ objects: [Object], from dataSource: SyncDataSource) -> Bool
 }
 
 
 // MARK: // Private
-// MARK: - Collection
+// MARK: - Collection Extension
 private extension Collection where Iterator.Element: DataSourceClient {
-    func _shouldLoad(_ objects: [Object], from dataSource: DataSource) -> Bool  {
+    func _shouldLoad(_ objects: [Object], from dataSource: SyncDataSource) -> Bool  {
         return self.all(fulfill: { $0.shouldLoad(objects, from: dataSource) })
     }
     
-    func _shouldSave(_ objects: [Object], to dataSource: DataSource) -> Bool {
+    func _shouldSave(_ objects: [Object], to dataSource: SyncDataSource) -> Bool {
         return self.all(fulfill: { $0.shouldSave(objects, to: dataSource) })
     }
     
-    func _shouldDelete(_ objects: [Object], from dataSource: DataSource) -> Bool {
+    func _shouldDelete(_ objects: [Object], from dataSource: SyncDataSource) -> Bool {
         return self.all(fulfill: { $0.shouldDelete(objects, from: dataSource) })
     }
 }
