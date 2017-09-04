@@ -18,14 +18,7 @@ typealias Minutes = Float
 
 
 
-protocol DataSourceClient {
-    func shouldLoad(_ objects: [Object], from dataSource: DataSource) -> Bool
-    func willLoad(_ objects: [Object], from dataSource: DataSource) -> Bool
-    func shouldSave(_ objects: [Object], to dataSource: DataSource) -> Bool
-    func willSave(_ objects: [Object], to dataSource: DataSource) -> Bool
-    func shouldDelete(_ objects: [Object], from dataSource: DataSource) -> Bool
-    func willDelete(_ objects: [Object], from dataSource: DataSource) -> Bool
-}
+
 
 
 protocol AsyncDataSourceClient: DataSourceClient {
@@ -35,19 +28,7 @@ protocol AsyncDataSourceClient: DataSourceClient {
 }
 
 
-extension Collection where Iterator.Element: DataSourceClient {
-    func shouldLoad(_ objects: [Object], from dataSource: DataSource) -> Bool  {
-        return self.all(fulfill: { $0.shouldLoad(objects, from: dataSource) })
-    }
-    
-    func shouldSave(_ objects: [Object], to dataSource: DataSource) -> Bool {
-        return self.all(fulfill: { $0.shouldSave(objects, to: dataSource) })
-    }
-    
-    func shouldDelete(_ objects: [Object], from dataSource: DataSource) -> Bool {
-        return self.all(fulfill: { $0.shouldDelete(objects, from: dataSource) })
-    }
-}
+
 
 
 extension Collection where Iterator.Element: AsyncDataSourceClient {

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2E1D18D477B38DF7DAA36C579EBDA939 /* DecouplerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46D9C3C9C25F0F16E3C8BE5590A1CAF /* DecouplerTests.swift */; };
 		4741F6948C9D8C29E3B13C240E8BFB68 /* Pods_Decoupler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EBDF68965B8900DD41594ED5718F2D8 /* Pods_Decoupler.framework */; };
+		68EF122FA966E8A68525373B22C17486 /* DataSourceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77D338681836E092F73D6DBADB10809 /* DataSourceClient.swift */; };
 		8DCB195C11928E263FB0EB164E875953 /* Decoupler.h in Headers */ = {isa = PBXBuildFile; fileRef = FFE5EEF24F3D1539B32DDBB371DC481C /* Decoupler.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF9CED6DF0ACC65EBA0C1EF46D77C75F /* Decoupler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1AF9EE2F620BDBC1F7B9AE21D35C681 /* Decoupler.framework */; };
 		D8B196B5F238F3317A1DE4EE64E7802C /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9675CA24D843FF58A91158FA6D4EC16F /* Object.swift */; };
@@ -31,6 +32,7 @@
 		91CFAD8CE6D0451D53BF8D3B0BC239AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		944E9187CF439990F8FCA14F6B4F7169 /* DecouplerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DecouplerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9675CA24D843FF58A91158FA6D4EC16F /* Object.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Object.swift; sourceTree = "<group>"; };
+		A77D338681836E092F73D6DBADB10809 /* DataSourceClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceClient.swift; sourceTree = "<group>"; };
 		A8D0D7F3549ACE7889981E2C4FCD9E51 /* Pods-DecouplerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DecouplerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DecouplerTests/Pods-DecouplerTests.release.xcconfig"; sourceTree = "<group>"; };
 		AB963FD4A2C61E97E314CD699F97831D /* Pods-DecouplerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DecouplerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DecouplerTests/Pods-DecouplerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B1AF9EE2F620BDBC1F7B9AE21D35C681 /* Decoupler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Decoupler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +78,7 @@
 		3380A32350F5F9EE08D63CD92E0617B5 /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				A77D338681836E092F73D6DBADB10809 /* DataSourceClient.swift */,
 				9675CA24D843FF58A91158FA6D4EC16F /* Object.swift */,
 			);
 			path = Code;
@@ -345,6 +348,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68EF122FA966E8A68525373B22C17486 /* DataSourceClient.swift in Sources */,
 				D8B196B5F238F3317A1DE4EE64E7802C /* Object.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
