@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1CDD5EA97564E7AEEE377BF5110FA974 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AC39EAE372306707DA11BE496ECDFD /* DataController.swift */; };
 		2E1D18D477B38DF7DAA36C579EBDA939 /* DecouplerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46D9C3C9C25F0F16E3C8BE5590A1CAF /* DecouplerTests.swift */; };
 		40B77AE7D86B1F2A913B2AEAE7ECBFF9 /* AsyncDataSourceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C0BB225AF30ACCC1F2BEFCFC9575F0 /* AsyncDataSourceClient.swift */; };
 		4741F6948C9D8C29E3B13C240E8BFB68 /* Pods_Decoupler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EBDF68965B8900DD41594ED5718F2D8 /* Pods_Decoupler.framework */; };
@@ -48,6 +49,7 @@
 		D8DB782A7E5F8D81912A850F375B5F96 /* SyncDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncDataSource.swift; sourceTree = "<group>"; };
 		E736559A76BC4AE51084F6C8311B5E84 /* Pods_DecouplerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DecouplerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F46D9C3C9C25F0F16E3C8BE5590A1CAF /* DecouplerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecouplerTests.swift; sourceTree = "<group>"; };
+		F7AC39EAE372306707DA11BE496ECDFD /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		FFE5EEF24F3D1539B32DDBB371DC481C /* Decoupler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Decoupler.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -89,6 +91,7 @@
 				596AFD5CEAAA88F11EE365CA8B509C20 /* AbstractDataSource.swift */,
 				D8448D4799A61744828514F93AB66174 /* AsyncDataSource.swift */,
 				69C0BB225AF30ACCC1F2BEFCFC9575F0 /* AsyncDataSourceClient.swift */,
+				F7AC39EAE372306707DA11BE496ECDFD /* DataController.swift */,
 				A77D338681836E092F73D6DBADB10809 /* DataSourceClient.swift */,
 				9675CA24D843FF58A91158FA6D4EC16F /* Object.swift */,
 				D8DB782A7E5F8D81912A850F375B5F96 /* SyncDataSource.swift */,
@@ -363,6 +366,7 @@
 				51A476378807FB8A0D06E90691B98FBF /* AbstractDataSource.swift in Sources */,
 				92DC1F71088E1B1C1F73641A94615502 /* AsyncDataSource.swift in Sources */,
 				40B77AE7D86B1F2A913B2AEAE7ECBFF9 /* AsyncDataSourceClient.swift in Sources */,
+				1CDD5EA97564E7AEEE377BF5110FA974 /* DataController.swift in Sources */,
 				68EF122FA966E8A68525373B22C17486 /* DataSourceClient.swift in Sources */,
 				D8B196B5F238F3317A1DE4EE64E7802C /* Object.swift in Sources */,
 				B087DE158797F6C4A914D60676E36A4F /* SyncDataSource.swift in Sources */,

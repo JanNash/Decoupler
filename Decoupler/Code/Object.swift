@@ -17,56 +17,8 @@ protocol MappedData {}
 typealias Minutes = Float
 
 
-enum SaveResult {
-    enum SaveError: Error {
-        case unknown
-        case unauthorized
-        case failedValidation
-    }
-    
-    case success(objects: [Object])
-    case failure(error: SaveError, objects: [Object])
-}
-
-enum ReloadResult {
-    enum ReloadError: Error {
-        case unknown
-        case unauthorized
-    }
-    
-    case success(objects: [Object])
-    case failure(error: ReloadError, objects: [Object])
-}
-
-enum DeleteResult {
-    enum DeleteError {
-        case unknown
-        case unauthorized
-        case failedValidation
-    }
-    
-    case success(objects: [Object])
-    case failure(error: DeleteError, objects: [Object])
-}
 
 
-
-
-
-
-
-
-
-
-
-protocol DataController {
-    func loadObject(with id: ObjectID, from syncDataSource: SyncDataSource) -> Identifiable?
-    func loadObjects(with ids: [ObjectID], from syncDataSource: SyncDataSource) -> [Identifiable]
-    func loadObjects(with filters: [Filter], from syncDataSource: SyncDataSource) -> [Object]
-    func reloadObjects(_ object: [Object], from syncDataSource: SyncDataSource) -> ReloadResult
-    func saveObjects(_ objects: [Object], to syncDataSource: SyncDataSource) -> SaveResult
-    func deleteObjects(_ objects: [Object], from syncDataSource: SyncDataSource) -> DeleteResult
-}
 
 
 protocol Filter {}
