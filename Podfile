@@ -7,7 +7,7 @@ target 'Decoupler' do
   use_frameworks!
 
   # Pods for Decoupler
-  pod 'SignificantSpices', '~> 0.1.0'
+  pod 'SignificantSpices', '~> 0.2.0'
   pod 'WeakRefCollections', '~> 0.1.0'
 
   target 'DecouplerTests' do
