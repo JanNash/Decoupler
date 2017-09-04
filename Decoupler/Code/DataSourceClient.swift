@@ -6,6 +6,8 @@
 //  Copyright © 2017 JanNash. All rights reserved.
 //
 
+import SignificantSpices
+
 
 // MARK: // Public
 // MARK: Protocol Declaration
