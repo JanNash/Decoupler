@@ -6,40 +6,15 @@
 //  Copyright © 2017 JanNash. All rights reserved.
 //
 
-import SignificantSpices
-import WeakRefCollections
 
-
-
-
-protocol MappedData {}
-
-typealias Minutes = Float
-
-
+// MARK: // Public
+// MARK: Protocol Declaration
+protocol Object {
+    var controller: DataController { get }
+}
 
 
 
 
 protocol Filter {}
-
-
-protocol Object {
-    var controller: DataController { get }
-}
-
-protocol ObjectID {}
-
-protocol Identifiable: Object {
-    var objectID: ObjectID { get }
-}
-
-
-class Pet: Object {
-    init(with controller: DataController) {
-        self.controller = controller
-    }
-    
-    var controller: DataController
-}
 

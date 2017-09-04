@@ -18,6 +18,7 @@
 		B087DE158797F6C4A914D60676E36A4F /* SyncDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DB782A7E5F8D81912A850F375B5F96 /* SyncDataSource.swift */; };
 		BF9CED6DF0ACC65EBA0C1EF46D77C75F /* Decoupler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1AF9EE2F620BDBC1F7B9AE21D35C681 /* Decoupler.framework */; };
 		D8B196B5F238F3317A1DE4EE64E7802C /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9675CA24D843FF58A91158FA6D4EC16F /* Object.swift */; };
+		EF48FE6BFBF1476305830A9BF75B406E /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB5C54CFA69A00C0706EEF53F6AA5E8 /* Identifiable.swift */; };
 		FBE611ED03F07A3529666DCB67F00E8C /* Pods_DecouplerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E736559A76BC4AE51084F6C8311B5E84 /* Pods_DecouplerTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +49,7 @@
 		D8448D4799A61744828514F93AB66174 /* AsyncDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncDataSource.swift; sourceTree = "<group>"; };
 		D8DB782A7E5F8D81912A850F375B5F96 /* SyncDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncDataSource.swift; sourceTree = "<group>"; };
 		E736559A76BC4AE51084F6C8311B5E84 /* Pods_DecouplerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DecouplerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFB5C54CFA69A00C0706EEF53F6AA5E8 /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
 		F46D9C3C9C25F0F16E3C8BE5590A1CAF /* DecouplerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecouplerTests.swift; sourceTree = "<group>"; };
 		F7AC39EAE372306707DA11BE496ECDFD /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		FFE5EEF24F3D1539B32DDBB371DC481C /* Decoupler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Decoupler.h; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				69C0BB225AF30ACCC1F2BEFCFC9575F0 /* AsyncDataSourceClient.swift */,
 				F7AC39EAE372306707DA11BE496ECDFD /* DataController.swift */,
 				A77D338681836E092F73D6DBADB10809 /* DataSourceClient.swift */,
+				EFB5C54CFA69A00C0706EEF53F6AA5E8 /* Identifiable.swift */,
 				9675CA24D843FF58A91158FA6D4EC16F /* Object.swift */,
 				D8DB782A7E5F8D81912A850F375B5F96 /* SyncDataSource.swift */,
 			);
@@ -368,6 +371,7 @@
 				40B77AE7D86B1F2A913B2AEAE7ECBFF9 /* AsyncDataSourceClient.swift in Sources */,
 				1CDD5EA97564E7AEEE377BF5110FA974 /* DataController.swift in Sources */,
 				68EF122FA966E8A68525373B22C17486 /* DataSourceClient.swift in Sources */,
+				EF48FE6BFBF1476305830A9BF75B406E /* Identifiable.swift in Sources */,
 				D8B196B5F238F3317A1DE4EE64E7802C /* Object.swift in Sources */,
 				B087DE158797F6C4A914D60676E36A4F /* SyncDataSource.swift in Sources */,
 			);
