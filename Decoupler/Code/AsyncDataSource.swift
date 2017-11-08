@@ -7,7 +7,7 @@
 //
 
 
-protocol AsyncDataSource: AbstractDataSource {
+protocol AsyncDataSource: DataSource {
     var clients: [AsyncDataSourceClient] { get }
     
     func loadObjectsAsync(withIDs ids: [ObjectID])

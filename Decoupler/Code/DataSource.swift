@@ -1,5 +1,5 @@
 //
-//  AbstractDataSource.swift
+//  DataSource.swift
 //  Decoupler
 //
 //  Created by Jan Nash on 9/4/17.
@@ -9,6 +9,6 @@
 
 // MARK: // Public
 // MARK: Protocol Declaration
-protocol AbstractDataSource {
+protocol DataSource {
     var clients: DataSourceClient { get }
 }
