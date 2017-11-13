@@ -9,7 +9,7 @@
 
 // MARK: // Public
 // MARK: Protocol Declaration
-/*
+/**
  A DataSource is supposed to:
  - provide data-records on request
  
@@ -26,14 +26,17 @@
  - by ID
  - by filtering
  
- A client passes either:
- - a single ID
- - a set of IDs
- - one or more filters
- and receives a Result ???
+ A client passes:
+ - a single ID to request a single, identifiable record
+ - a set of IDs to request multiple, identifiable records
+ - a number of filters and sort descriptors to request
+   multiple identifiable or unidentifiable recordes
  
- This can happen either synchronously or asynchronously.
- (though that's out of the scope of this abstract protocol)
+ Since the functions that implement the retrieval can be
+ implemented synchronously as well as asynchronously,
+ there are two subprotocols of this protocol,
+ SyncDataSource and AsyncDataSource, each of which
+ also use their own refined client-protocol versions.
  
  A DataSource can have multiple clients.
  */
