@@ -40,6 +40,6 @@
  
  A DataSource can have multiple clients.
  */
-protocol DataSource {
+public protocol DataSource {
     var clients: DataSourceClient { get }
 }
