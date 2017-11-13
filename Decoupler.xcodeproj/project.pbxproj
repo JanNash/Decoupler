@@ -11,11 +11,11 @@
 		2E1D18D477B38DF7DAA36C579EBDA939 /* DecouplerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46D9C3C9C25F0F16E3C8BE5590A1CAF /* DecouplerTests.swift */; };
 		40B77AE7D86B1F2A913B2AEAE7ECBFF9 /* AsyncDataSourceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C0BB225AF30ACCC1F2BEFCFC9575F0 /* AsyncDataSourceClient.swift */; };
 		4741F6948C9D8C29E3B13C240E8BFB68 /* Pods_Decoupler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EBDF68965B8900DD41594ED5718F2D8 /* Pods_Decoupler.framework */; };
-		51A476378807FB8A0D06E90691B98FBF /* AbstractDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596AFD5CEAAA88F11EE365CA8B509C20 /* AbstractDataSource.swift */; };
 		68EF122FA966E8A68525373B22C17486 /* DataSourceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77D338681836E092F73D6DBADB10809 /* DataSourceClient.swift */; };
 		8DCB195C11928E263FB0EB164E875953 /* Decoupler.h in Headers */ = {isa = PBXBuildFile; fileRef = FFE5EEF24F3D1539B32DDBB371DC481C /* Decoupler.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		92DC1F71088E1B1C1F73641A94615502 /* AsyncDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8448D4799A61744828514F93AB66174 /* AsyncDataSource.swift */; };
 		B087DE158797F6C4A914D60676E36A4F /* SyncDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DB782A7E5F8D81912A850F375B5F96 /* SyncDataSource.swift */; };
+		B0B44C0D51D6F6A262F33A07A427A765 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D03F9EA45389AEB45CF3ACFABAF99EE /* DataSource.swift */; };
 		BF9CED6DF0ACC65EBA0C1EF46D77C75F /* Decoupler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1AF9EE2F620BDBC1F7B9AE21D35C681 /* Decoupler.framework */; };
 		C0DF7061D6B4359B85897E2A9B4DA45B /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81C2EDC6FFC7B180CB52E7DB23A7E33 /* Filter.swift */; };
 		D8B196B5F238F3317A1DE4EE64E7802C /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9675CA24D843FF58A91158FA6D4EC16F /* Object.swift */; };
@@ -35,9 +35,9 @@
 
 /* Begin PBXFileReference section */
 		3EFA8739AF1DECD83728D652CE084152 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		596AFD5CEAAA88F11EE365CA8B509C20 /* AbstractDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractDataSource.swift; sourceTree = "<group>"; };
 		69C0BB225AF30ACCC1F2BEFCFC9575F0 /* AsyncDataSourceClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncDataSourceClient.swift; sourceTree = "<group>"; };
 		7EBDF68965B8900DD41594ED5718F2D8 /* Pods_Decoupler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Decoupler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D03F9EA45389AEB45CF3ACFABAF99EE /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		91CFAD8CE6D0451D53BF8D3B0BC239AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		944E9187CF439990F8FCA14F6B4F7169 /* DecouplerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DecouplerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9675CA24D843FF58A91158FA6D4EC16F /* Object.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Object.swift; sourceTree = "<group>"; };
@@ -92,10 +92,10 @@
 		3380A32350F5F9EE08D63CD92E0617B5 /* Code */ = {
 			isa = PBXGroup;
 			children = (
-				596AFD5CEAAA88F11EE365CA8B509C20 /* AbstractDataSource.swift */,
 				D8448D4799A61744828514F93AB66174 /* AsyncDataSource.swift */,
 				69C0BB225AF30ACCC1F2BEFCFC9575F0 /* AsyncDataSourceClient.swift */,
 				F7AC39EAE372306707DA11BE496ECDFD /* DataController.swift */,
+				8D03F9EA45389AEB45CF3ACFABAF99EE /* DataSource.swift */,
 				A77D338681836E092F73D6DBADB10809 /* DataSourceClient.swift */,
 				F81C2EDC6FFC7B180CB52E7DB23A7E33 /* Filter.swift */,
 				EFB5C54CFA69A00C0706EEF53F6AA5E8 /* Identifiable.swift */,
@@ -369,10 +369,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51A476378807FB8A0D06E90691B98FBF /* AbstractDataSource.swift in Sources */,
 				92DC1F71088E1B1C1F73641A94615502 /* AsyncDataSource.swift in Sources */,
 				40B77AE7D86B1F2A913B2AEAE7ECBFF9 /* AsyncDataSourceClient.swift in Sources */,
 				1CDD5EA97564E7AEEE377BF5110FA974 /* DataController.swift in Sources */,
+				B0B44C0D51D6F6A262F33A07A427A765 /* DataSource.swift in Sources */,
 				68EF122FA966E8A68525373B22C17486 /* DataSourceClient.swift in Sources */,
 				C0DF7061D6B4359B85897E2A9B4DA45B /* Filter.swift in Sources */,
 				EF48FE6BFBF1476305830A9BF75B406E /* Identifiable.swift in Sources */,
