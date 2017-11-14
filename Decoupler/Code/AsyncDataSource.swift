@@ -7,7 +7,9 @@
 //
 
 
-protocol AsyncDataSource: DataSource {
+// MARK: // Public
+// MARK: Protocol Declaration
+public protocol AsyncDataSource: DataSource {
     var clients: [AsyncDataSourceClient] { get }
     
     func loadObjectsAsync(withIDs ids: [ObjectID])

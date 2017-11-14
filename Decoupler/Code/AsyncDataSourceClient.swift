@@ -9,7 +9,7 @@
 
 // MARK: // Public
 // MARK: Protocol Declaration
-protocol AsyncDataSourceClient: DataSourceClient {
+public protocol AsyncDataSourceClient: DataSourceClient {
     func didLoad(_ objects: [Object], from dataSource: AsyncDataSource)
     func didSave(_ objects: [Object], to dataSource: AsyncDataSource)
     func didDelete(_ objects: [Object], from dataSource: AsyncDataSource)

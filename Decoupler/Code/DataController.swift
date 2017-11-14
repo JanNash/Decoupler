@@ -10,8 +10,8 @@
 // MARK: // Public
 // MARK: Result Enums
 // MARK: - SaveResult
-enum SaveResult {
-    enum SaveError: Error {
+public enum SaveResult {
+    public enum SaveError: Error {
         case unknown
         case unauthorized
         case failedValidation
@@ -23,8 +23,8 @@ enum SaveResult {
 
 
 // MARK: - ReloadResult
-enum ReloadResult {
-    enum ReloadError: Error {
+public enum ReloadResult {
+    public enum ReloadError: Error {
         case unknown
         case unauthorized
     }
@@ -35,8 +35,8 @@ enum ReloadResult {
 
 
 // MARK: - DeleteResult
-enum DeleteResult {
-    enum DeleteError {
+public enum DeleteResult {
+    public enum DeleteError {
         case unknown
         case unauthorized
         case failedValidation
@@ -49,7 +49,7 @@ enum DeleteResult {
 
 // MARK: - DataController
 // MARK: Protocol Declaration
-protocol DataController {
+public protocol DataController {
     func loadObject(with id: ObjectID, from syncDataSource: SyncDataSource) -> Identifiable?
     func loadObjects(with ids: [ObjectID], from syncDataSource: SyncDataSource) -> [Identifiable]
     func loadObjects(with filters: [Filter], from syncDataSource: SyncDataSource) -> [Object]

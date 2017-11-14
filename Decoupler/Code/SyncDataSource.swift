@@ -9,7 +9,7 @@
 
 // MARK: // Public
 // MARK: Protocol Declaration
-protocol SyncDataSource: DataSource {
+public protocol SyncDataSource: DataSource {
     func loadObjectsSync(withIDs ids: [ObjectID]) -> [Identifiable]
     func loadObjectsSync(ofType type: Object.Type, with filters: [Filter]) -> [Object]
     func reloadObjectsSync(_ objects: [Object]) -> ReloadResult
