@@ -11,7 +11,7 @@ import SignificantSpices
 
 // MARK: // Public
 // MARK: Protocol Declaration
-protocol DataSourceClient {
+public protocol DataSourceClient {
     func shouldLoad(_ objects: [Object], from dataSource: SyncDataSource) -> Bool
     func willLoad(_ objects: [Object], from dataSource: SyncDataSource) -> Bool
     func shouldSave(_ objects: [Object], to dataSource: SyncDataSource) -> Bool

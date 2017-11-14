@@ -9,4 +9,4 @@
 
 // MARK: // Public
 // MARK: Protocol Declaration
-protocol Filter {}
+public protocol Filter {}

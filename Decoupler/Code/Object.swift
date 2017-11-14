@@ -9,6 +9,6 @@
 
 // MARK: // Public
 // MARK: Protocol Declaration
-protocol Object {
+public protocol Object {
     var controller: DataController { get }
 }

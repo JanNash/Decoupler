@@ -9,10 +9,10 @@
 
 // MARK: // Public
 // MARK: - ObjectID
-protocol ObjectID {}
+public protocol ObjectID {}
 
 
 // MARK: - Identifiable
-protocol Identifiable: Object {
+public protocol Identifiable: Object {
     var objectID: ObjectID { get }
 }
